@@ -3,6 +3,7 @@ package net.gameoverse.tutorial;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
@@ -11,6 +12,8 @@ import net.minecraft.client.tutorial.TutorialSteps;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -21,23 +24,23 @@ import java.util.Map;
 
 /** Draws the hints the server sends and reports when a screen the current step waits for opens. */
 public final class TutorialClient implements ClientModInitializer {
-    private static final Map<String, HintToast> SHOWN = new HashMap<>();
     private static String waitingStep;
     private static List<String> waitingScreens = List.of();
 
     @Override
     public void onInitializeClient() {
+        HudElementRegistry.addLast(Identifier.fromNamespaceAndPath(Tutorial.MOD_ID, "hints"), HintHud::render);
         ClientPlayNetworking.registerGlobalReceiver(Payloads.Show.TYPE, (payload, context) -> show(context.client(), payload));
         ClientPlayNetworking.registerGlobalReceiver(Payloads.Progress.TYPE, (payload, context) -> {
-            HintToast toast = SHOWN.get(payload.id());
-            if (toast != null) {
-                toast.setProgress(payload.progress());
+            Hint hint = HintHud.find(payload.id());
+            if (hint != null) {
+                hint.setProgress(payload.progress());
             }
         });
         ClientPlayNetworking.registerGlobalReceiver(Payloads.Hide.TYPE, (payload, context) -> {
-            HintToast toast = SHOWN.remove(payload.id());
-            if (toast != null) {
-                toast.hide();
+            Hint hint = HintHud.find(payload.id());
+            if (hint != null) {
+                hint.hide();
             }
             if (payload.id().equals(waitingStep)) {
                 waitingStep = null;
@@ -51,8 +54,7 @@ public final class TutorialClient implements ClientModInitializer {
             }
         });
         ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
-            SHOWN.values().forEach(HintToast::hide);
-            SHOWN.clear();
+            HintHud.clear();
             waitingStep = null;
             waitingScreens = List.of();
         });
@@ -70,19 +72,13 @@ public final class TutorialClient implements ClientModInitializer {
     }
 
     private static void show(Minecraft client, Payloads.Show payload) {
-        HintToast old = SHOWN.remove(payload.id());
+        Hint old = HintHud.find(payload.id());
         if (old != null) {
             old.hide();
         }
         if (payload.seconds() == 0) {
             // One chain step at a time: a new one replaces any other step still up
-            SHOWN.values().removeIf(t -> {
-                if (t.isChainHint()) {
-                    t.hide();
-                    return true;
-                }
-                return false;
-            });
+            HintHud.all().stream().filter(Hint::isChainHint).forEach(Hint::hide);
             waitingStep = payload.id();
             waitingScreens = payload.screens();
         }
@@ -93,10 +89,8 @@ public final class TutorialClient implements ClientModInitializer {
         Identifier iconId = Identifier.tryParse(payload.icon());
         ItemStack icon = iconId != null && BuiltInRegistries.ITEM.containsKey(iconId)
             ? new ItemStack(BuiltInRegistries.ITEM.getValue(iconId)) : new ItemStack(Items.BOOK);
-        HintToast toast = new HintToast(client.font, payload.id(), icon, title, text, payload.progress(),
-            payload.seconds() * 1000L);
-        SHOWN.put(payload.id(), toast);
-        client.getToastManager().addToast(toast);
+        HintHud.add(new Hint(client.font, payload.id(), icon, title, text, payload.progress(), payload.seconds() * 1000L));
+        client.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_TOAST_IN, 1.0F, 1.0F));
     }
 
     /** The controller wording when the player is on a controller and the step has one. */

@@ -8,9 +8,9 @@ import java.lang.reflect.Method;
 import java.util.Optional;
 
 /**
- * How far Controlify's in-game button guide reaches down the top-right corner, in GUI pixels, so our hints can sit
+ * How far Controlify's in-game button guide reaches down the top-left corner, in GUI pixels, so our hints can sit
  * below it instead of on top of it. Read reflectively from Controlify 3.5 internals (Controlify.inGameButtonGuide(),
- * InGameButtonGuide.controller/guideInstance, GuideInstanceImpl.rightGuides().height(), the profile's guide
+ * InGameButtonGuide.controller/guideInstance, GuideInstanceImpl.leftGuides().height(), the profile's guide
  * settings); anything missing or renamed gives 0 and hints stay in the corner. Recheck on Controlify updates.
  */
 final class ControllerGuide {
@@ -27,13 +27,13 @@ final class ControllerGuide {
     private static Field show;
     private static Field bottom;
     private static Field scale;
-    private static Method rightGuides;
+    private static Method leftGuides;
     private static Method height;
 
     private ControllerGuide() {
     }
 
-    static int rightColumnBottom() {
+    static int leftColumnBottom() {
         if (broken || !FabricLoader.getInstance().isModLoaded("controlify")) {
             return 0;
         }
@@ -59,7 +59,7 @@ final class ControllerGuide {
                 show = guideSettings.getField("showIngameGuide");
                 bottom = guideSettings.getField("ingameGuideBottom");
                 scale = guideSettings.getField("ingameGuiScale");
-                rightGuides = Class.forName("dev.isxander.controlify.gui.guide.GuideInstanceImpl").getMethod("rightGuides");
+                leftGuides = Class.forName("dev.isxander.controlify.gui.guide.GuideInstanceImpl").getMethod("leftGuides");
                 height = Class.forName("dev.isxander.controlify.gui.guide.PrecomputedLines").getMethod("height");
             }
             Optional<?> igbg = (Optional<?>) inGameButtonGuide.invoke(instance.invoke(null));
@@ -70,7 +70,7 @@ final class ControllerGuide {
             if (!show.getBoolean(guideSettings) || bottom.getBoolean(guideSettings)) {
                 return 0;
             }
-            int lines = (int) height.invoke(rightGuides.invoke(guideInstance.get(igbg.get())));
+            int lines = (int) height.invoke(leftGuides.invoke(guideInstance.get(igbg.get())));
             if (lines <= 0) {
                 return 0;
             }
