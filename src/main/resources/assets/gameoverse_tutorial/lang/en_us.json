@@ -2,128 +2,88 @@
   "gameoverse_tutorial.move.title": "Welcome to Gameoverse",
   "gameoverse_tutorial.move.text": "Walk around with %s %s %s %s.",
   "gameoverse_tutorial.move.text.controller": "Walk around with the left stick.",
-
   "gameoverse_tutorial.verify.title": "Verify to start playing",
   "gameoverse_tutorial.verify.text": "Type /discordverify and send the code to our Discord bot, or ask a verified player to /vouch you.",
-
   "gameoverse_tutorial.guide.title": "Open the Guide",
   "gameoverse_tutorial.guide.text": "Press %s. Everything this server changes is explained in it.",
   "gameoverse_tutorial.guide.text.controller": "Hold Back. Everything this server changes is explained in it.",
-
   "gameoverse_tutorial.logs.title": "Get some wood",
   "gameoverse_tutorial.logs.text": "Hold %s on a tree trunk to collect 3 logs.",
   "gameoverse_tutorial.logs.text.controller": "Hold RT on a tree trunk to collect 3 logs.",
-
   "gameoverse_tutorial.crafting_table.title": "Craft a Crafting Table",
   "gameoverse_tutorial.crafting_table.text": "Press %s, turn logs into planks, then 4 planks into a Crafting Table.",
   "gameoverse_tutorial.crafting_table.text.controller": "Press Y, turn logs into planks, then 4 planks into a Crafting Table.",
-
   "gameoverse_tutorial.wooden_pickaxe.title": "Craft a Wooden Pickaxe",
   "gameoverse_tutorial.wooden_pickaxe.text": "Place the Crafting Table and use planks and sticks.",
-
   "gameoverse_tutorial.stone_pickaxe.title": "Upgrade to stone",
   "gameoverse_tutorial.stone_pickaxe.text": "Mine some stone and craft a Stone Pickaxe.",
-
   "gameoverse_tutorial.coal.title": "Find coal",
-  "gameoverse_tutorial.coal.text": "Mine coal ore, or smelt logs into charcoal in a Furnace.",
-
+  "gameoverse_tutorial.coal.text": "Mine coal ore, or smelt logs into charcoal. You'll need it to smelt ore and, later, for a Campfire.",
   "gameoverse_tutorial.campfire.title": "Build a Campfire",
   "gameoverse_tutorial.campfire.text": "Sticks, coal and logs. It's your stove, your light and your way to heal.",
-
   "gameoverse_tutorial.cook.title": "Cook on the Campfire",
-  "gameoverse_tutorial.cook.text": "Put raw meat on a lit Campfire with %s. Furnaces don't cook food here.",
-  "gameoverse_tutorial.cook.text.controller": "Put raw meat on a lit Campfire with LT. Furnaces don't cook food here.",
-
-  "gameoverse_tutorial.eat.title": "Eat to heal",
-  "gameoverse_tutorial.eat.text": "There's no hunger bar: food heals you, and you don't heal on your own. Hold %s to eat.",
-  "gameoverse_tutorial.eat.text.controller": "There's no hunger bar: food heals you, and you don't heal on your own. Hold LT to eat.",
-
+  "gameoverse_tutorial.cook.text": "Put raw meat on the lit Campfire with %s. Cooked food heals more than raw, and Furnaces don't cook food here.",
+  "gameoverse_tutorial.cook.text.controller": "Put raw meat on the lit Campfire with LT. Cooked food heals more than raw, and Furnaces don't cook food here.",
   "gameoverse_tutorial.copper.title": "Find copper",
   "gameoverse_tutorial.copper.text": "Iron needs a Copper Pickaxe. Mine copper ore with your Stone Pickaxe.",
-
   "gameoverse_tutorial.smelt_copper.title": "Smelt the copper",
   "gameoverse_tutorial.smelt_copper.text": "Craft a Furnace from 8 Cobblestone and smelt 3 Copper Ingots.",
-
   "gameoverse_tutorial.copper_pickaxe.title": "Craft a Copper Pickaxe",
   "gameoverse_tutorial.copper_pickaxe.text": "3 Copper Ingots and 2 sticks.",
-
   "gameoverse_tutorial.iron.title": "Mine iron",
-  "gameoverse_tutorial.iron.text": "Mine iron ore and smelt about 13 Iron Ingots. Your first iron tools take a small machine.",
-
+  "gameoverse_tutorial.iron.text": "Mine iron ore and smelt about 14 Iron Ingots. Your first iron tools take a small machine.",
   "gameoverse_tutorial.press.title": "Build a Mechanical Press",
   "gameoverse_tutorial.press.text": "Iron gear needs Iron Sheets. The Guide's Iron Forge page has each recipe.",
-
   "gameoverse_tutorial.hand_crank.title": "Craft a Hand Crank",
   "gameoverse_tutorial.hand_crank.text": "Planks and Andesite Alloy. It powers the Press by hand.",
-
-  "gameoverse_tutorial.iron_sheet.title": "Press 3 Iron Sheets",
+  "gameoverse_tutorial.iron_sheet.title": "Press 4 Iron Sheets",
   "gameoverse_tutorial.iron_sheet.text": "Put the Crank on the Press, drop an Iron Ingot under it and turn the Crank with %s.",
   "gameoverse_tutorial.iron_sheet.text.controller": "Put the Crank on the Press, drop an Iron Ingot under it and turn the Crank with LT.",
-
   "gameoverse_tutorial.iron_pickaxe.title": "Craft an Iron Pickaxe",
-  "gameoverse_tutorial.iron_pickaxe.text": "3 Iron Sheets and 2 sticks. Next up: a proper meal.",
-
+  "gameoverse_tutorial.iron_pickaxe.text": "3 Iron Sheets and 2 sticks.",
   "gameoverse_tutorial.oil.title": "Get cooking oil",
   "gameoverse_tutorial.oil.text": "Craft a Kitchen Knife (copper works) and kill a pig with it for Oil and pork.",
-
   "gameoverse_tutorial.wok.title": "Craft a Wok and Kitchen Shovel",
   "gameoverse_tutorial.wok.text": "Both are made from iron ingots.",
-
   "gameoverse_tutorial.wok_oil.title": "Heat the Wok",
   "gameoverse_tutorial.wok_oil.text": "Place the Wok on a lit Campfire, then use Oil on it with %s.",
   "gameoverse_tutorial.wok_oil.text.controller": "Place the Wok on a lit Campfire, then use Oil on it with LT.",
-
   "gameoverse_tutorial.stir_fry.title": "Make Sweet and Sour Pork",
   "gameoverse_tutorial.stir_fry.text": "Add raw pork and Sugar, stir with the Kitchen Shovel until it's done, then serve into a Bowl.",
-
   "gameoverse_tutorial.shield.title": "Eat your dish",
   "gameoverse_tutorial.shield.text": "It gives Satiated Shield: hits up to 32 hearts are blocked while you're above a fifth of your health.",
-
   "gameoverse_tutorial.done.title": "You're on your own now",
   "gameoverse_tutorial.done.text": "The Guide (%s) has the rest. Good luck out there!",
   "gameoverse_tutorial.done.text.controller": "The Guide (hold Back) has the rest. Good luck out there!",
-
   "gameoverse_tutorial.starter_house.title": "Your starter house",
   "gameoverse_tutorial.starter_house.text": "Use the House blueprint on the ground with %s, pick a style and press Build! for a quick home. Or keep it and build your own.",
   "gameoverse_tutorial.starter_house.text.controller": "Use the House blueprint on the ground with LT, pick a style and press Build! for a quick home. Or keep it and build your own.",
-
   "gameoverse_tutorial.felling.title": "Fell whole trees",
   "gameoverse_tutorial.felling.text": "Hit a log with an axe and keep swinging: the whole tree comes down. Hold %s to cut one log.",
   "gameoverse_tutorial.felling.text.controller": "Hit a log with an axe and keep swinging: the whole tree comes down. Sneak to cut one log.",
-
   "gameoverse_tutorial.veins.title": "Break whole ore veins",
   "gameoverse_tutorial.veins.text": "Keep hitting ore with a pickaxe and the whole vein breaks. Hold %s to mine one block.",
   "gameoverse_tutorial.veins.text.controller": "Keep hitting ore with a pickaxe and the whole vein breaks. Sneak to mine one block.",
-
   "gameoverse_tutorial.campfire_fuel.title": "Keep the fire going",
   "gameoverse_tutorial.campfire_fuel.text": "A Campfire burns about 90 seconds and rain puts it out. Throw in logs or coal, or build under a roof.",
-
   "gameoverse_tutorial.cozy.title": "You're Cozy",
   "gameoverse_tutorial.cozy.text": "Standing near a lit Campfire slowly heals you.",
-
   "gameoverse_tutorial.food_effects.title": "Food effects",
   "gameoverse_tutorial.food_effects.text": "Every food gives a short effect, longer the more it's cooked. Hover over food to see it.",
-
   "gameoverse_tutorial.f3.title": "Where am I?",
   "gameoverse_tutorial.f3.text": "F3 hides your position. Carry a Compass for your coordinates and a Clock for the time.",
-
   "gameoverse_tutorial.death.title": "You keep your items",
   "gameoverse_tutorial.death.text": "Dying costs one heart instead, down to 3. Heart Crystals give hearts back.",
-
   "gameoverse_tutorial.heart_crystal.title": "A Heart Crystal!",
   "gameoverse_tutorial.heart_crystal.text": "Eat it with %s for one more heart, for good.",
   "gameoverse_tutorial.heart_crystal.text.controller": "Eat it with LT for one more heart, for good.",
-
   "gameoverse_tutorial.rumor.title": "A Rumor",
   "gameoverse_tutorial.rumor.text": "Use it with %s for a hint toward a landmark you haven't found.",
   "gameoverse_tutorial.rumor.text.controller": "Use it with LT for a hint toward a landmark you haven't found.",
-
   "gameoverse_tutorial.keys.title": "A key",
   "gameoverse_tutorial.keys.text": "It opens a Locked Chest of its tier or lower. Each one holds extra loot.",
-
   "gameoverse_tutorial.material_traits.title": "Material traits",
   "gameoverse_tutorial.material_traits.text": "Copper and gold gear have bonuses of their own. The tooltip lists them.",
-
   "gameoverse_tutorial.command.off": "Tutorial hints are off. /tutorial on brings them back.",
   "gameoverse_tutorial.command.on": "Tutorial hints are on.",
   "gameoverse_tutorial.command.restart": "Tutorial restarted from the beginning.",
@@ -131,5 +91,13 @@
   "gameoverse_tutorial.command.unknown": "No tutorial hint called %s.",
   "gameoverse_tutorial.command.status": "Tutorial: %s, %s of %s steps done.",
   "gameoverse_tutorial.command.status.on": "on",
-  "gameoverse_tutorial.command.status.off": "off"
+  "gameoverse_tutorial.command.status.off": "off",
+  "gameoverse_tutorial.forage.title": "Find something to eat",
+  "gameoverse_tutorial.forage.text": "There's no hunger bar: food heals you, and you don't heal on your own. Berries, fruit and wild vegetables are fine raw. Hold %s to eat.",
+  "gameoverse_tutorial.forage.text.controller": "There's no hunger bar: food heals you, and you don't heal on your own. Berries, fruit and wild vegetables are fine raw. Hold LT to eat.",
+  "gameoverse_tutorial.flint_and_steel.title": "Craft Flint and Steel",
+  "gameoverse_tutorial.flint_and_steel.text": "Flint (from gravel) and your last Iron Sheet. Campfires here start unlit, and this lights them.",
+  "gameoverse_tutorial.light_campfire.title": "Light it",
+  "gameoverse_tutorial.light_campfire.text": "Place the Campfire and use Flint and Steel on it with %s.",
+  "gameoverse_tutorial.light_campfire.text.controller": "Place the Campfire and use Flint and Steel on it with LT."
 }
