@@ -1,6 +1,7 @@
 package net.gameoverse.tutorial;
 
 import com.mojang.brigadier.Command;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
@@ -12,6 +13,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
@@ -56,7 +58,12 @@ public final class Tutorial implements ModInitializer {
                 .executes(Tutorial::status)
                 .then(Commands.literal("off").executes(c -> set(c, true, false)))
                 .then(Commands.literal("on").executes(c -> set(c, false, false)))
-                .then(Commands.literal("restart").executes(c -> set(c, false, true)))));
+                .then(Commands.literal("restart").executes(c -> set(c, false, true)))
+                .then(Commands.literal("replay").then(Commands.argument("hint", StringArgumentType.word())
+                    .suggests((c, b) -> SharedSuggestionProvider.suggest(
+                        java.util.stream.Stream.concat(engine.steps().chain().stream(), engine.steps().tips().stream())
+                            .map(Steps.Step::id), b))
+                    .executes(Tutorial::replay)))));
     }
 
     private static int status(CommandContext<CommandSourceStack> context) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
@@ -66,6 +73,24 @@ public final class Tutorial implements ModInitializer {
         context.getSource().sendSuccess(() -> Component.translatable("gameoverse_tutorial.command.status",
             Component.translatable(state.off ? "gameoverse_tutorial.command.status.off" : "gameoverse_tutorial.command.status.on"),
             done, engine.steps().chain().size()), false);
+        return Command.SINGLE_SUCCESS;
+    }
+
+    /** Forget one hint so it can show again (a tip when its trigger next holds, a step when the chain reaches it). */
+    private static int replay(CommandContext<CommandSourceStack> context) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player = context.getSource().getPlayerOrException();
+        String id = StringArgumentType.getString(context, "hint");
+        TutorialState state = engine.state(player);
+        boolean known = java.util.stream.Stream.concat(engine.steps().chain().stream(), engine.steps().tips().stream())
+            .anyMatch(s -> s.id().equals(id));
+        if (!known) {
+            context.getSource().sendFailure(Component.translatable("gameoverse_tutorial.command.unknown", id));
+            return 0;
+        }
+        state.done.remove(id);
+        player.setAttached(STATE, state);
+        engine.reset(player);
+        context.getSource().sendSuccess(() -> Component.translatable("gameoverse_tutorial.command.replay", id), false);
         return Command.SINGLE_SUCCESS;
     }
 

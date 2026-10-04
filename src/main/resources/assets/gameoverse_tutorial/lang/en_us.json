@@ -127,6 +127,8 @@
   "gameoverse_tutorial.command.off": "Tutorial hints are off. /tutorial on brings them back.",
   "gameoverse_tutorial.command.on": "Tutorial hints are on.",
   "gameoverse_tutorial.command.restart": "Tutorial restarted from the beginning.",
+  "gameoverse_tutorial.command.replay": "The %s hint will show again.",
+  "gameoverse_tutorial.command.unknown": "No tutorial hint called %s.",
   "gameoverse_tutorial.command.status": "Tutorial: %s, %s of %s steps done.",
   "gameoverse_tutorial.command.status.on": "on",
   "gameoverse_tutorial.command.status.off": "off"

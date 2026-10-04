@@ -14,7 +14,8 @@ Controlify's left button-guide column moves down under the hints, through an opt
 tutorial off, and reports when a screen the current step waits for opens.
 
 Players with more than `veteran_play_hours` (2) of play time when they first meet the mod start with it off.
-Commands, for anyone about themselves: `/tutorial` (status), `/tutorial off`, `/tutorial on`, `/tutorial restart`.
+Commands, for anyone about themselves: `/tutorial` (status), `/tutorial off`, `/tutorial on`, `/tutorial restart`, `/tutorial replay <hint>`
+(forget one hint so it shows again).
 
 ## Steps
 
