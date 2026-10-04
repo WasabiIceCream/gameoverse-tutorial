@@ -31,7 +31,7 @@
   "gameoverse_tutorial.copper_pickaxe.title": "Craft a Copper Pickaxe",
   "gameoverse_tutorial.copper_pickaxe.text": "3 Copper Ingots and 2 sticks.",
   "gameoverse_tutorial.iron.title": "Mine iron",
-  "gameoverse_tutorial.iron.text": "Mine iron ore and smelt about 14 Iron Ingots. Your first iron tools take a small machine.",
+  "gameoverse_tutorial.iron.text": "Iron lies deeper than copper, often in caves: bring torches. Smelt about 14 Iron Ingots; your first iron tools take a small machine.",
   "gameoverse_tutorial.press.title": "Build a Mechanical Press",
   "gameoverse_tutorial.press.text": "Iron gear needs Iron Sheets. The Guide's Iron Forge page has each recipe.",
   "gameoverse_tutorial.hand_crank.title": "Craft a Hand Crank",
@@ -99,5 +99,11 @@
   "gameoverse_tutorial.flint_and_steel.text": "Flint (from gravel) and your last Iron Sheet. Campfires here start unlit, and this lights them.",
   "gameoverse_tutorial.light_campfire.title": "Light it",
   "gameoverse_tutorial.light_campfire.text": "Place the Campfire and use Flint and Steel on it with %s.",
-  "gameoverse_tutorial.light_campfire.text.controller": "Place the Campfire and use Flint and Steel on it with LT."
+  "gameoverse_tutorial.light_campfire.text.controller": "Place the Campfire and use Flint and Steel on it with LT.",
+  "gameoverse_tutorial.bed.title": "Make a safe bed",
+  "gameoverse_tutorial.bed.text": "Craft a Bed from wool and planks. You can only sleep where monsters can't reach it: build walls around it and light the area.",
+  "gameoverse_tutorial.sleep.title": "Night is falling",
+  "gameoverse_tutorial.sleep.text": "Sleep in your Bed to skip it. If monsters can reach it, a trail of flames shows their way in: close that gap.",
+  "gameoverse_tutorial.gear.title": "Gear up",
+  "gameoverse_tutorial.gear.text": "Craft a Copper Sword and some Copper armor and put it on. Iron sits deeper, where caves hold more monsters."
 }

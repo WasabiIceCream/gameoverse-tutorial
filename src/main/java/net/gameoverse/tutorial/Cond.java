@@ -102,6 +102,15 @@ public interface Cond {
                 public void screens(List<String> out) { out.addAll(names); }
             };
         }
+        if (o.has("armor")) {
+            int points = o.get("armor").getAsInt();
+            return c -> c.player().getArmorValue() >= points;
+        }
+        if (o.has("night")) {
+            // Night in the Overworld, when beds work
+            return c -> c.player().level().dimension() == net.minecraft.world.level.Level.OVERWORLD
+                && c.player().level().isDarkOutside();
+        }
         if (o.has("client_event")) {
             String name = o.get("client_event").getAsString();
             return c -> c.session().sawEvent(name);

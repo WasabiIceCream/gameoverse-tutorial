@@ -35,6 +35,8 @@ Conditions:
 | `{"permission": ["group.verified", ...]}` | any node passes (Fabric Permissions API; passes if no mod ships it) |
 | `{"screen": ["class.Name", ...]}` | the client opened a screen of (a subclass of) one of these classes while the step showed |
 | `{"client_event": "name"}` | the client reported it this session; `f3_closed`: the player closed the F3 screen |
+| `{"armor": n}` | the player wears at least n armor points |
+| `{"night": true}` | it's night in the Overworld (when beds work) |
 | `{"chain_done": "step"}` | that chain step is done |
 | `{"shown_seconds": n}` | the step has been on screen n seconds |
 | `{"play_minutes": n}` | total play time reaches n minutes |

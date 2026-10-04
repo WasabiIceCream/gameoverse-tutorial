@@ -140,6 +140,27 @@
       }
     },
     {
+      "id": "bed",
+      "icon": "minecraft:red_bed",
+      "until": {
+        "any": [
+          {
+            "item": "#minecraft:beds"
+          },
+          {
+            "stat": "minecraft:crafted",
+            "key": "#minecraft:beds",
+            "min": 1
+          },
+          {
+            "stat": "minecraft:custom",
+            "key": "minecraft:sleep_in_bed",
+            "min": 1
+          }
+        ]
+      }
+    },
+    {
       "id": "coal",
       "icon": "minecraft:coal",
       "until": {
@@ -233,6 +254,36 @@
         "any": [
           {
             "item": "minecraft:copper_pickaxe"
+          },
+          {
+            "item": "minecraft:iron_pickaxe"
+          },
+          {
+            "item": "minecraft:diamond_pickaxe"
+          },
+          {
+            "item": "minecraft:netherite_pickaxe"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gear",
+      "icon": "minecraft:copper_sword",
+      "until": {
+        "any": [
+          {
+            "all": [
+              {
+                "item": "#minecraft:swords"
+              },
+              {
+                "armor": 5
+              }
+            ]
+          },
+          {
+            "item": "create:iron_sheet"
           },
           {
             "item": "minecraft:iron_pickaxe"
@@ -568,6 +619,21 @@
       "seconds": 18,
       "when": {
         "item": "prefab:item_house"
+      }
+    },
+    {
+      "id": "sleep",
+      "icon": "minecraft:red_bed",
+      "seconds": 16,
+      "when": {
+        "all": [
+          {
+            "chain_done": "bed"
+          },
+          {
+            "night": true
+          }
+        ]
       }
     },
     {
