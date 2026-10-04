@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "gameoverse_tutorial",
+  "version": "${version}",
+
+  "name": "Gameoverse Tutorial",
+  "description": "Vanilla-style tutorial hints that walk new players from their first steps to an iron pickaxe and a Satiated Shield meal, one mechanic at a time, plus one-off tips.",
+  "authors": [
+    "WasabiIceCream"
+  ],
+
+  "license": "MIT",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.gameoverse.tutorial.Tutorial"
+    ],
+    "client": [
+      "net.gameoverse.tutorial.TutorialClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": ">=26.1",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

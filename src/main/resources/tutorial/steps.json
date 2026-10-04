@@ -1,0 +1,233 @@
+{
+  "_comment": "Chain steps show one at a time, in order, until their 'until' condition holds; a step already satisfied when reached is skipped silently. Tips show once, for 'seconds', when 'when' first holds. Text lives in assets/gameoverse_tutorial/lang (gameoverse_tutorial.<id>.title/.text, optional .text.controller); 'keys' fill its %s slots with the player's own keybinds. See the README for the condition types.",
+  "veteran_play_hours": 2,
+  "chain": [
+    {
+      "id": "move",
+      "icon": "minecraft:leather_boots",
+      "keys": ["key.forward", "key.left", "key.back", "key.right"],
+      "until": {"stat": "minecraft:custom", "key": "minecraft:walk_one_cm", "min": 800, "since_shown": true}
+    },
+    {
+      "id": "verify",
+      "icon": "minecraft:name_tag",
+      "until": {"permission": ["group.verified", "group.vouched", "group.admin"]}
+    },
+    {
+      "id": "guide",
+      "icon": "minecraft:written_book",
+      "keys": ["key.oracle_index.open"],
+      "until": {"screen": ["rearth.oracle.ui.WikiBaseScreen", "rearth.oracle.ui.OracleScreen", "rearth.oracle.ui.SearchScreen"]}
+    },
+    {
+      "id": "logs",
+      "icon": "minecraft:oak_log",
+      "keys": ["key.attack"],
+      "until": {"any": [
+        {"item": "#minecraft:logs", "count": 3},
+        {"stat": "minecraft:crafted", "key": "minecraft:crafting_table", "min": 1}
+      ]}
+    },
+    {
+      "id": "crafting_table",
+      "icon": "minecraft:crafting_table",
+      "keys": ["key.inventory"],
+      "until": {"any": [
+        {"stat": "minecraft:crafted", "key": "minecraft:crafting_table", "min": 1},
+        {"item": "minecraft:crafting_table"}
+      ]}
+    },
+    {
+      "id": "wooden_pickaxe",
+      "icon": "minecraft:wooden_pickaxe",
+      "until": {"any": [
+        {"stat": "minecraft:crafted", "key": "#minecraft:pickaxes", "min": 1},
+        {"item": "#minecraft:pickaxes"}
+      ]}
+    },
+    {
+      "id": "stone_pickaxe",
+      "icon": "minecraft:stone_pickaxe",
+      "until": {"any": [
+        {"item": "minecraft:stone_pickaxe"}, {"item": "minecraft:copper_pickaxe"}, {"item": "minecraft:iron_pickaxe"},
+        {"item": "minecraft:diamond_pickaxe"}, {"item": "minecraft:netherite_pickaxe"},
+        {"stat": "minecraft:crafted", "key": "minecraft:stone_pickaxe", "min": 1}
+      ]}
+    },
+    {
+      "id": "coal",
+      "icon": "minecraft:coal",
+      "until": {"any": [
+        {"item": "minecraft:coal"}, {"item": "minecraft:charcoal"}, {"item": "minecraft:campfire"},
+        {"stat": "minecraft:crafted", "key": "minecraft:campfire", "min": 1}
+      ]}
+    },
+    {
+      "id": "campfire",
+      "icon": "minecraft:campfire",
+      "until": {"any": [
+        {"stat": "minecraft:crafted", "key": "minecraft:campfire", "min": 1},
+        {"item": "minecraft:campfire"}
+      ]}
+    },
+    {
+      "id": "cook",
+      "icon": "minecraft:cooked_beef",
+      "keys": ["key.use"],
+      "until": {"any": [
+        {"item": "#c:foods/cooked_meat"}, {"item": "#c:foods/cooked_fish"}, {"item": "minecraft:baked_potato"},
+        {"stat": "minecraft:used", "key": "#c:foods/cooked_meat", "min": 1}
+      ]}
+    },
+    {
+      "id": "eat",
+      "icon": "minecraft:cooked_porkchop",
+      "keys": ["key.use"],
+      "until": {"stat": "minecraft:used", "key": "#c:foods", "min": 1, "since_shown": true}
+    },
+    {
+      "id": "copper",
+      "icon": "minecraft:raw_copper",
+      "until": {"any": [
+        {"item": "minecraft:raw_copper"}, {"item": "minecraft:copper_ingot"}, {"item": "minecraft:copper_pickaxe"},
+        {"item": "minecraft:iron_pickaxe"}, {"item": "minecraft:diamond_pickaxe"}, {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "smelt_copper",
+      "icon": "minecraft:furnace",
+      "until": {"any": [
+        {"item": "minecraft:copper_ingot", "count": 3}, {"item": "minecraft:copper_pickaxe"},
+        {"item": "minecraft:iron_pickaxe"}, {"item": "minecraft:diamond_pickaxe"}, {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "copper_pickaxe",
+      "icon": "minecraft:copper_pickaxe",
+      "until": {"any": [
+        {"item": "minecraft:copper_pickaxe"}, {"item": "minecraft:iron_pickaxe"},
+        {"item": "minecraft:diamond_pickaxe"}, {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "iron",
+      "icon": "minecraft:raw_iron",
+      "until": {"any": [
+        {"item": "minecraft:iron_ingot", "count": 13}, {"item": "create:mechanical_press"}, {"item": "create:iron_sheet"},
+        {"stat": "minecraft:crafted", "key": "create:mechanical_press", "min": 1},
+        {"item": "minecraft:iron_pickaxe"}, {"item": "minecraft:diamond_pickaxe"}, {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "press",
+      "icon": "create:mechanical_press",
+      "until": {"any": [
+        {"item": "create:mechanical_press"}, {"stat": "minecraft:crafted", "key": "create:mechanical_press", "min": 1},
+        {"item": "create:iron_sheet"}, {"item": "minecraft:iron_pickaxe"}, {"item": "minecraft:diamond_pickaxe"},
+        {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "hand_crank",
+      "icon": "create:hand_crank",
+      "until": {"any": [
+        {"item": "create:hand_crank"}, {"stat": "minecraft:crafted", "key": "create:hand_crank", "min": 1},
+        {"item": "create:iron_sheet"}, {"item": "minecraft:iron_pickaxe"}, {"item": "minecraft:diamond_pickaxe"},
+        {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "iron_sheet",
+      "icon": "create:iron_sheet",
+      "keys": ["key.use"],
+      "until": {"any": [
+        {"item": "create:iron_sheet", "count": 3}, {"item": "minecraft:iron_pickaxe"},
+        {"item": "minecraft:diamond_pickaxe"}, {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "iron_pickaxe",
+      "icon": "minecraft:iron_pickaxe",
+      "until": {"any": [
+        {"item": "minecraft:iron_pickaxe"}, {"item": "minecraft:diamond_pickaxe"}, {"item": "minecraft:netherite_pickaxe"}
+      ]}
+    },
+    {
+      "id": "oil",
+      "icon": "kaleidoscope_cookery:copper_kitchen_knife",
+      "until": {"any": [
+        {"advancement": "kaleidoscope_cookery:oil"}, {"item": "kaleidoscope_cookery:oil"},
+        {"advancement": "kaleidoscope_cookery:add_oil"}
+      ]}
+    },
+    {
+      "id": "wok",
+      "icon": "kaleidoscope_cookery:pot",
+      "until": {"any": [
+        {"all": [{"item": "kaleidoscope_cookery:pot"}, {"item": "kaleidoscope_cookery:kitchen_shovel"}]},
+        {"all": [{"advancement": "kaleidoscope_cookery:pot"}, {"item": "kaleidoscope_cookery:kitchen_shovel"}]},
+        {"advancement": "kaleidoscope_cookery:add_oil"}
+      ]}
+    },
+    {
+      "id": "wok_oil",
+      "icon": "kaleidoscope_cookery:oil",
+      "keys": ["key.use"],
+      "until": {"advancement": "kaleidoscope_cookery:add_oil"}
+    },
+    {
+      "id": "stir_fry",
+      "icon": "kaleidoscope_cookery:sweet_and_sour_pork",
+      "keys": ["key.use"],
+      "until": {"any": [
+        {"item": "kaleidoscope_cookery:sweet_and_sour_pork"}, {"item": "kaleidoscope_cookery:braised_beef"},
+        {"item": "kaleidoscope_cookery:braised_fish"}, {"item": "kaleidoscope_cookery:yakitori"},
+        {"item": "kaleidoscope_cookery:fish_flavored_shredded_pork"}, {"item": "kaleidoscope_cookery:pan_seared_knight_steak"},
+        {"effect": "kaleidoscope_cookery:satiated_shield"}
+      ]}
+    },
+    {
+      "id": "shield",
+      "icon": "minecraft:golden_apple",
+      "keys": ["key.use"],
+      "until": {"effect": "kaleidoscope_cookery:satiated_shield"}
+    },
+    {
+      "id": "done",
+      "icon": "minecraft:cake",
+      "keys": ["key.oracle_index.open"],
+      "until": {"shown_seconds": 15}
+    }
+  ],
+  "tips": [
+    {"id": "felling", "icon": "minecraft:stone_axe", "keys": ["key.sneak"], "seconds": 12,
+     "when": {"item": "#minecraft:axes"}},
+    {"id": "veins", "icon": "minecraft:raw_iron", "keys": ["key.sneak"], "seconds": 12,
+     "when": {"all": [{"chain_done": "stone_pickaxe"}, {"item": "#minecraft:pickaxes"}]}},
+    {"id": "campfire_fuel", "icon": "minecraft:campfire", "seconds": 14,
+     "when": {"chain_done": "campfire"}},
+    {"id": "cozy", "icon": "minecraft:campfire", "seconds": 12,
+     "when": {"effect": "hearty_meals:cozy"}},
+    {"id": "food_effects", "icon": "minecraft:bread", "seconds": 14,
+     "when": {"chain_done": "eat"}},
+    {"id": "f3", "icon": "minecraft:compass", "seconds": 14,
+     "when": {"all": [{"chain_done": "crafting_table"}, {"play_minutes": 15}]}},
+    {"id": "death", "icon": "minecraft:totem_of_undying", "seconds": 16,
+     "when": {"stat": "minecraft:custom", "key": "minecraft:deaths", "min": 1}},
+    {"id": "heart_crystal", "icon": "minecraft:nether_star", "keys": ["key.use"], "seconds": 12,
+     "when": {"item": "minecraft:barrier", "model": "gameoverse:heart_crystal"}},
+    {"id": "rumor", "icon": "minecraft:paper", "keys": ["key.use"], "seconds": 12,
+     "when": {"item": "gameoverse_poi_discovery:rumor"}},
+    {"id": "keys", "icon": "minecraft:tripwire_hook", "seconds": 14,
+     "when": {"any": [
+       {"item": "gameoverse_locked_chests:common_key"}, {"item": "gameoverse_locked_chests:rare_key"},
+       {"item": "gameoverse_locked_chests:epic_key"}, {"item": "gameoverse_locked_chests:legendary_key"},
+       {"item": "gameoverse_locked_chests:divine_key"}
+     ]}},
+    {"id": "material_traits", "icon": "minecraft:golden_pickaxe", "seconds": 12,
+     "when": {"any": [
+       {"item": "minecraft:copper_pickaxe"}, {"item": "minecraft:copper_sword"}, {"item": "minecraft:copper_axe"},
+       {"item": "minecraft:golden_pickaxe"}, {"item": "minecraft:golden_sword"}
+     ]}}
+  ]
+}
