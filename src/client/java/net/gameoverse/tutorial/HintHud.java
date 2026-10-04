@@ -57,8 +57,14 @@ public final class HintHud {
     static void render(GuiGraphicsExtractor graphics, DeltaTracker delta) {
         Minecraft mc = Minecraft.getInstance();
         long now = Util.getMillis();
+        if (mc.options.hideGui || mc.getDebugOverlay().showDebugScreen()) {
+            HINTS.forEach(h -> h.pause(now));
+            bottom = 0;
+            return;
+        }
+        HINTS.forEach(h -> h.resume(now));
         HINTS.removeIf(h -> h.finished(now));
-        if (HINTS.isEmpty() || mc.options.hideGui || mc.getDebugOverlay().showDebugScreen()) {
+        if (HINTS.isEmpty()) {
             bottom = 0;
             return;
         }

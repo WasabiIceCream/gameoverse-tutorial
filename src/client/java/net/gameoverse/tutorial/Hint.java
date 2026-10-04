@@ -30,7 +30,8 @@ final class Hint {
     private final List<FormattedCharSequence> lines = new ArrayList<>();
     private final boolean progressable;
     private final long durationMs;
-    private final long shownAt = Util.getMillis();
+    private long shownAt = Util.getMillis();
+    private long pausedAt = -1;
     private long hiddenAt = -1;
     private float progress;
     private float smoothed;
@@ -61,8 +62,28 @@ final class Hint {
         this.progress = progress;
     }
 
+    /** While hints are hidden (F1, F3) a tip's time doesn't run, so it always gets its full time on screen. */
+    void pause(long now) {
+        if (pausedAt < 0) {
+            pausedAt = now;
+        }
+    }
+
+    void resume(long now) {
+        if (pausedAt >= 0) {
+            shownAt += now - pausedAt;
+            if (hiddenAt >= 0) {
+                hiddenAt += now - pausedAt;
+            }
+            pausedAt = -1;
+        }
+    }
+
     /** Fully slid out and can be dropped. */
     boolean finished(long now) {
+        if (pausedAt >= 0) {
+            return false;
+        }
         if (hiddenAt < 0 && durationMs > 0 && now - shownAt >= durationMs) {
             hiddenAt = now;
         }

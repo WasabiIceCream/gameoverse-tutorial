@@ -35,7 +35,7 @@ public final class Engine {
         final Set<String> events = new HashSet<>();
 
         Session(long tick) {
-            lastTip = tick;
+            lastTip = tick - TIP_GAP;
         }
 
         public boolean screenSeen(String stepId) {
@@ -153,6 +153,7 @@ public final class Engine {
             float progress = (float) step.until().progress(ctx);
             if (!step.id().equals(session.shown)) {
                 ServerPlayNetworking.send(player, new Payloads.Show(step.id(), step.icon(), step.keys(), 0, progress, step.screens()));
+                Tutorial.LOGGER.info("Tutorial step {} for {}", step.id(), player.getScoreboardName());
                 session.shown = step.id();
                 session.shownAt.put(step.id(), tick);
                 session.lastProgress = progress;
@@ -176,6 +177,7 @@ public final class Engine {
             if (tip.when().test(new Cond.Ctx(player, state, tip.id(), session, tick))) {
                 state.done.add(tip.id());
                 ServerPlayNetworking.send(player, new Payloads.Show(tip.id(), tip.icon(), tip.keys(), tip.seconds(), -1, java.util.List.of()));
+                Tutorial.LOGGER.info("Tutorial tip {} for {}", tip.id(), player.getScoreboardName());
                 session.lastTip = tick;
                 return true;
             }
