@@ -560,6 +560,33 @@
       }
     },
     {
+      "id": "wok_prep",
+      "icon": "minecraft:sugar",
+      "until": {
+        "any": [
+          {
+            "all": [
+              {
+                "item": "#c:foods/raw_pork"
+              },
+              {
+                "item": "minecraft:sugar"
+              },
+              {
+                "item": "minecraft:bowl"
+              }
+            ]
+          },
+          {
+            "advancement": "kaleidoscope_cookery:add_oil"
+          },
+          {
+            "effect": "kaleidoscope_cookery:satiated_shield"
+          }
+        ]
+      }
+    },
+    {
       "id": "wok_oil",
       "icon": "kaleidoscope_cookery:oil",
       "keys": [

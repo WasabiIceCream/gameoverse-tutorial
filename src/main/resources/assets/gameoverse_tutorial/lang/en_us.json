@@ -46,10 +46,10 @@
   "gameoverse_tutorial.wok.title": "Craft a Wok and Kitchen Shovel",
   "gameoverse_tutorial.wok.text": "Both are made from iron ingots.",
   "gameoverse_tutorial.wok_oil.title": "Heat the Wok",
-  "gameoverse_tutorial.wok_oil.text": "Place the Wok on a lit Campfire, then use Oil on it with %s.",
-  "gameoverse_tutorial.wok_oil.text.controller": "Place the Wok on a lit Campfire, then use Oil on it with LT.",
+  "gameoverse_tutorial.wok_oil.text": "Place the Wok on a lit Campfire, use Oil on it with %s, then add the pork and the Sugar straight away.",
+  "gameoverse_tutorial.wok_oil.text.controller": "Place the Wok on a lit Campfire, use Oil on it with LT, then add the pork and the Sugar straight away.",
   "gameoverse_tutorial.stir_fry.title": "Make Sweet and Sour Pork",
-  "gameoverse_tutorial.stir_fry.text": "Add raw pork and Sugar, stir with the Kitchen Shovel until it's done, then serve into a Bowl.",
+  "gameoverse_tutorial.stir_fry.text": "Stir with the Kitchen Shovel until it's done, then serve it into a Bowl. Don't leave it too long.",
   "gameoverse_tutorial.shield.title": "Eat your dish",
   "gameoverse_tutorial.shield.text": "It gives Satiated Shield: hits up to 32 hearts are blocked while you're above a fifth of your health.",
   "gameoverse_tutorial.done.title": "You're on your own now",
@@ -105,5 +105,7 @@
   "gameoverse_tutorial.sleep.title": "Night is falling",
   "gameoverse_tutorial.sleep.text": "Sleep in your Bed to skip it. If monsters can reach it, a trail of flames shows their way in: close that gap.",
   "gameoverse_tutorial.gear.title": "Gear up",
-  "gameoverse_tutorial.gear.text": "Craft a copper weapon (a sword, axe or spear) and some Copper armor, and put the armor on. Iron sits deeper, where caves hold more monsters."
+  "gameoverse_tutorial.gear.text": "Craft a copper weapon (a sword, axe or spear) and some Copper armor, and put the armor on. Iron sits deeper, where caves hold more monsters.",
+  "gameoverse_tutorial.wok_prep.title": "Get everything ready",
+  "gameoverse_tutorial.wok_prep.text": "Raw pork, Sugar (from sugar cane) and a Bowl. A hot Wok doesn't wait: if you take too long, the dish is ruined."
 }
