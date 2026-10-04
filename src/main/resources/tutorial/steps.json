@@ -106,7 +106,7 @@
       ],
       "until": {
         "stat": "minecraft:used",
-        "key": "#c:foods",
+        "key": "*food",
         "min": 1,
         "since_shown": true
       }
@@ -422,10 +422,7 @@
             "effect": "hearty_meals:cozy"
           },
           {
-            "item": "#c:foods/cooked_meat"
-          },
-          {
-            "item": "#c:foods/cooked_fish"
+            "item": "*campfire_result"
           }
         ]
       }
@@ -439,13 +436,7 @@
       "until": {
         "any": [
           {
-            "item": "#c:foods/cooked_meat"
-          },
-          {
-            "item": "#c:foods/cooked_fish"
-          },
-          {
-            "item": "minecraft:baked_potato"
+            "item": "*campfire_result"
           },
           {
             "stat": "minecraft:used",

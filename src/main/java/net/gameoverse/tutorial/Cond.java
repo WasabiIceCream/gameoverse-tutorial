@@ -134,16 +134,42 @@ public interface Cond {
         private final int count;
         private final Identifier model;
 
+        private final boolean campfireResult;
+        private static java.util.Set<Item> campfireResults;
+
         ItemCond(String key, int count, Identifier model) {
+            this.campfireResult = key.equals("*campfire_result");
             this.tag = key.startsWith("#") ? TagKey.create(Registries.ITEM, Identifier.parse(key.substring(1))) : null;
-            this.item = key.startsWith("#") ? null : Identifier.parse(key);
+            this.item = key.startsWith("#") || campfireResult ? null : Identifier.parse(key);
             this.count = count;
             this.model = model;
         }
 
-        private boolean matches(ItemStack stack) {
+        /** Everything a campfire recipe makes (vanilla's cooked tags cover 28 items; our campfire cooks far more). */
+        private static java.util.Set<Item> campfireResults(ServerPlayer player) {
+            if (campfireResults == null) {
+                java.util.Set<Item> out = new java.util.HashSet<>();
+                for (var holder : player.level().getServer().getRecipeManager().getRecipes()) {
+                    if (!(holder.value() instanceof net.minecraft.world.item.crafting.CampfireCookingRecipe recipe)) {
+                        continue;
+                    }
+                    ItemStack result = recipe.assemble(new net.minecraft.world.item.crafting.SingleRecipeInput(ItemStack.EMPTY));
+                    if (!result.isEmpty()) {
+                        out.add(result.getItem());
+                    }
+                }
+                campfireResults = java.util.Set.copyOf(out);
+                Tutorial.LOGGER.info("{} items count as campfire-cooked for the tutorial", campfireResults.size());
+            }
+            return campfireResults;
+        }
+
+        private boolean matches(ItemStack stack, ServerPlayer player) {
             if (stack.isEmpty()) {
                 return false;
+            }
+            if (campfireResult) {
+                return campfireResults(player).contains(stack.getItem());
             }
             if (tag != null ? !stack.is(tag) : !BuiltInRegistries.ITEM.getKey(stack.getItem()).equals(item)) {
                 return false;
@@ -156,12 +182,12 @@ public interface Cond {
             int total = 0;
             for (int i = 0; i < inventory.getContainerSize(); i++) {
                 ItemStack stack = inventory.getItem(i);
-                if (matches(stack)) {
+                if (matches(stack, player)) {
                     total += stack.getCount();
                 }
             }
             ItemStack carried = player.containerMenu.getCarried();
-            if (matches(carried)) {
+            if (matches(carried, player)) {
                 total += carried.getCount();
             }
             return total;
@@ -192,6 +218,21 @@ public interface Cond {
             this.sinceShown = sinceShown;
         }
 
+        private static List<Item> foods;
+
+        private static List<Item> foods() {
+            if (foods == null) {
+                List<Item> out = new ArrayList<>();
+                for (Item item : BuiltInRegistries.ITEM) {
+                    if (item.components().has(DataComponents.FOOD)) {
+                        out.add(item);
+                    }
+                }
+                foods = List.copyOf(out);
+            }
+            return foods;
+        }
+
         private String baselineKey(Ctx c) {
             return c.stepId() + "|" + type + "|" + key;
         }
@@ -204,7 +245,12 @@ public interface Cond {
             }
             Registry registry = statType.getRegistry();
             long total = 0;
-            if (key.startsWith("#")) {
+            if (key.equals("*food") && statType.getRegistry() == BuiltInRegistries.ITEM) {
+                // Any item that is food: tags like #c:foods miss many mods' foods (500 of 945 here)
+                for (Item item : foods()) {
+                    total += player.getStats().getValue(statType.get(item));
+                }
+            } else if (key.startsWith("#")) {
                 TagKey tagKey = TagKey.create(registry.key(), Identifier.parse(key.substring(1)));
                 for (Object holder : (Iterable<?>) registry.getTagOrEmpty(tagKey)) {
                     total += player.getStats().getValue(statType.get(((Holder) holder).value()));

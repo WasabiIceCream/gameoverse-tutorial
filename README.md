@@ -28,8 +28,8 @@ Conditions:
 
 | Condition | Holds when |
 |---|---|
-| `{"item": "id" or "#tag", "count": n, "model": "ns:model"}` | the player carries at least n (default 1), optionally with that item model |
-| `{"stat": "minecraft:crafted", "key": "id" or "#tag", "min": n, "since_shown": true}` | a statistic (summed over a tag) reaches n; `since_shown` counts from when the step showed |
+| `{"item": "id" or "#tag" or "*campfire_result", "count": n, "model": "ns:model"}` | the player carries at least n (default 1), optionally with that item model; `*campfire_result` is anything a campfire recipe makes |
+| `{"stat": "minecraft:crafted", "key": "id" or "#tag" or "*food", "min": n, "since_shown": true}` | a statistic (summed over a tag, or over every food item for `*food`: `#c:foods` misses about half our foods) reaches n; `since_shown` counts from when the step showed |
 | `{"advancement": "ns:id"}` | the advancement is done |
 | `{"effect": "ns:id"}` | the effect is active |
 | `{"permission": ["group.verified", ...]}` | any node passes (Fabric Permissions API; passes if no mod ships it) |
