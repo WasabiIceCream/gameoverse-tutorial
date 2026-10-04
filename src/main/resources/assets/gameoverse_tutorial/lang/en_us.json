@@ -83,6 +83,10 @@
   "gameoverse_tutorial.done.text": "The Guide (%s) has the rest. Good luck out there!",
   "gameoverse_tutorial.done.text.controller": "The Guide (hold Back) has the rest. Good luck out there!",
 
+  "gameoverse_tutorial.starter_house.title": "Your starter house",
+  "gameoverse_tutorial.starter_house.text": "Use the House blueprint on the ground with %s, pick a style and press Build! for a quick home. Or keep it and build your own.",
+  "gameoverse_tutorial.starter_house.text.controller": "Use the House blueprint on the ground with LT, pick a style and press Build! for a quick home. Or keep it and build your own.",
+
   "gameoverse_tutorial.felling.title": "Fell whole trees",
   "gameoverse_tutorial.felling.text": "Hit a log with an axe and keep swinging: the whole tree comes down. Hold %s to cut one log.",
   "gameoverse_tutorial.felling.text.controller": "Hit a log with an axe and keep swinging: the whole tree comes down. Sneak to cut one log.",

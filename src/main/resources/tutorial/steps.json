@@ -200,6 +200,8 @@
     }
   ],
   "tips": [
+    {"id": "starter_house", "icon": "prefab:item_house", "keys": ["key.use"], "seconds": 18,
+     "when": {"item": "prefab:item_house"}},
     {"id": "felling", "icon": "minecraft:stone_axe", "keys": ["key.sneak"], "seconds": 12,
      "when": {"item": "#minecraft:axes"}},
     {"id": "veins", "icon": "minecraft:raw_iron", "keys": ["key.sneak"], "seconds": 12,
