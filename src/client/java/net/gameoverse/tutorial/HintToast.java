@@ -75,6 +75,12 @@ public final class HintToast implements Toast {
         }
     }
 
+    /** Below Controlify's button guide when it's showing in this corner. */
+    @Override
+    public float yPos(int firstSlotIndex) {
+        return Toast.super.yPos(firstSlotIndex) + ControllerGuide.rightColumnBottom();
+    }
+
     @Override
     public int height() {
         return 7 + Math.max(lines.size(), 2) * LINE + 3 + (progressable ? 4 : 0);
