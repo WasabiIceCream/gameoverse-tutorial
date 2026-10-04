@@ -275,7 +275,20 @@
           {
             "all": [
               {
-                "item": "#minecraft:swords"
+                "any": [
+                  {
+                    "item": "#minecraft:enchantable/weapon"
+                  },
+                  {
+                    "item": "#c:tools/melee_weapon"
+                  },
+                  {
+                    "item": "#c:tools/ranged_weapon"
+                  },
+                  {
+                    "item": "#minecraft:spears"
+                  }
+                ]
               },
               {
                 "armor": 5
