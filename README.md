@@ -7,8 +7,9 @@ project.
 
 Both sides. The server decides: it reads `src/main/resources/tutorial/steps.json`, checks each online player twice a
 second and tells the client which hint to show, update or take down; progress is saved on the player (Fabric
-attachment, kept on death). The client draws vanilla's tutorial toast with an item icon, fills in the player's own
-keybinds, uses a step's `.text.controller` wording when Controlify is in controller mode, switches vanilla's own
+attachment, kept on death). The client draws hints in vanilla's tutorial-toast look with an item icon, in their own top-left corner
+(under Controlify's left button-guide column when it shows; the top right already holds status effects, the Atlas
+minimap, the compass and clock read-outs and every toast), fills in the player's own keybinds, uses a step's `.text.controller` wording when Controlify is in controller mode, switches vanilla's own
 tutorial off, and reports when a screen the current step waits for opens.
 
 Players with more than `veteran_play_hours` (2) of play time when they first meet the mod start with it off.
