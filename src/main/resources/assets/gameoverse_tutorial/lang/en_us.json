@@ -96,7 +96,7 @@
   "gameoverse_tutorial.forage.text": "There's no hunger bar: food heals you, and you don't heal on your own. Berries, fruit and wild vegetables are fine raw. Hold %s to eat.",
   "gameoverse_tutorial.forage.text.controller": "There's no hunger bar: food heals you, and you don't heal on your own. Berries, fruit and wild vegetables are fine raw. Hold LT to eat.",
   "gameoverse_tutorial.flint_and_steel.title": "Craft Flint and Steel",
-  "gameoverse_tutorial.flint_and_steel.text": "Flint (from gravel) and your last Iron Sheet. Campfires here start unlit, and this lights them.",
+  "gameoverse_tutorial.flint_and_steel.text": "Flint (gravel always drops it when dug with a shovel) and your last Iron Sheet. Campfires here start unlit, and this lights them.",
   "gameoverse_tutorial.light_campfire.title": "Light it",
   "gameoverse_tutorial.light_campfire.text": "Place the Campfire and use Flint and Steel on it with %s.",
   "gameoverse_tutorial.light_campfire.text.controller": "Place the Campfire and use Flint and Steel on it with LT.",
