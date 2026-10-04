@@ -1,6 +1,7 @@
 package net.gameoverse.tutorial;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
@@ -26,6 +27,8 @@ import java.util.Map;
 public final class TutorialClient implements ClientModInitializer {
     private static String waitingStep;
     private static List<String> waitingScreens = List.of();
+    private static boolean debugWasOpen;
+    private static boolean debugClosedSent;
 
     @Override
     public void onInitializeClient() {
@@ -55,8 +58,19 @@ public final class TutorialClient implements ClientModInitializer {
         });
         ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
             HintHud.clear();
+            debugWasOpen = false;
+            debugClosedSent = false;
             waitingStep = null;
             waitingScreens = List.of();
+        });
+        // The F3 tip shows once the player first closes F3 (hints hide while it's open, its text is on the left)
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            boolean open = client.player != null && client.getDebugOverlay().showDebugScreen();
+            if (debugWasOpen && !open && !debugClosedSent && ClientPlayNetworking.canSend(Payloads.ClientEvent.TYPE)) {
+                ClientPlayNetworking.send(new Payloads.ClientEvent("f3_closed"));
+                debugClosedSent = true;
+            }
+            debugWasOpen = open;
         });
         ScreenEvents.AFTER_INIT.register((client, screen, width, height) -> {
             if (waitingStep == null || waitingScreens.isEmpty()) {

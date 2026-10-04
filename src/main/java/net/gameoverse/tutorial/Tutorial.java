@@ -37,6 +37,7 @@ public final class Tutorial implements ModInitializer {
         PayloadTypeRegistry.clientboundPlay().register(Payloads.Progress.TYPE, Payloads.Progress.CODEC);
         PayloadTypeRegistry.clientboundPlay().register(Payloads.Hide.TYPE, Payloads.Hide.CODEC);
         PayloadTypeRegistry.serverboundPlay().register(Payloads.ScreenOpened.TYPE, Payloads.ScreenOpened.CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(Payloads.ClientEvent.TYPE, Payloads.ClientEvent.CODEC);
 
         Steps steps = Steps.load();
         engine = new Engine(steps);
@@ -47,6 +48,8 @@ public final class Tutorial implements ModInitializer {
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> engine.leave(handler.player));
         ServerPlayNetworking.registerGlobalReceiver(Payloads.ScreenOpened.TYPE,
             (payload, context) -> engine.screenOpened(context.player(), payload.id()));
+        ServerPlayNetworking.registerGlobalReceiver(Payloads.ClientEvent.TYPE,
+            (payload, context) -> engine.clientEvent(context.player(), payload.name()));
 
         CommandRegistrationCallback.EVENT.register((dispatcher, registry, environment) -> dispatcher.register(
             Commands.literal("tutorial")

@@ -102,6 +102,10 @@ public interface Cond {
                 public void screens(List<String> out) { out.addAll(names); }
             };
         }
+        if (o.has("client_event")) {
+            String name = o.get("client_event").getAsString();
+            return c -> c.session().sawEvent(name);
+        }
         if (o.has("chain_done")) {
             String id = o.get("chain_done").getAsString();
             return c -> c.state().done.contains(id);

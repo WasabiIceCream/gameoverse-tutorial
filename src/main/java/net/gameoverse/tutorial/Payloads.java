@@ -75,4 +75,16 @@ public final class Payloads {
             return TYPE;
         }
     }
+
+    /** Client to server: something only the client sees happened (e.g. "f3_closed": the debug screen was closed). */
+    public record ClientEvent(String name) implements CustomPacketPayload {
+        public static final Type<ClientEvent> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Tutorial.MOD_ID, "client_event"));
+        public static final StreamCodec<FriendlyByteBuf, ClientEvent> CODEC =
+            StreamCodec.composite(ByteBufCodecs.STRING_UTF8, ClientEvent::name, ClientEvent::new);
+
+        @Override
+        public Type<ClientEvent> type() {
+            return TYPE;
+        }
+    }
 }

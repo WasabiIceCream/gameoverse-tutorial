@@ -213,7 +213,7 @@
     {"id": "food_effects", "icon": "minecraft:bread", "seconds": 14,
      "when": {"chain_done": "eat"}},
     {"id": "f3", "icon": "minecraft:compass", "seconds": 14,
-     "when": {"all": [{"chain_done": "crafting_table"}, {"play_minutes": 15}]}},
+     "when": {"client_event": "f3_closed"}},
     {"id": "death", "icon": "minecraft:totem_of_undying", "seconds": 16,
      "when": {"stat": "minecraft:custom", "key": "minecraft:deaths", "min": 1}},
     {"id": "heart_crystal", "icon": "minecraft:nether_star", "keys": ["key.use"], "seconds": 12,

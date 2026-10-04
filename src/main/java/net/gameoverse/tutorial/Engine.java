@@ -32,6 +32,7 @@ public final class Engine {
         long lastTip;
         final Map<String, Long> shownAt = new HashMap<>();
         final Set<String> screensSeen = new HashSet<>();
+        final Set<String> events = new HashSet<>();
 
         Session(long tick) {
             lastTip = tick;
@@ -39,6 +40,10 @@ public final class Engine {
 
         public boolean screenSeen(String stepId) {
             return screensSeen.contains(stepId);
+        }
+
+        public boolean sawEvent(String name) {
+            return events.contains(name);
         }
 
         public long shownFor(String stepId, long tick) {
@@ -59,6 +64,13 @@ public final class Engine {
         Session session = sessions.get(player.getUUID());
         if (session != null && stepId.equals(session.shown)) {
             session.screensSeen.add(stepId);
+        }
+    }
+
+    void clientEvent(ServerPlayer player, String name) {
+        Session session = sessions.get(player.getUUID());
+        if (session != null && name.length() <= 64) {
+            session.events.add(name);
         }
     }
 
