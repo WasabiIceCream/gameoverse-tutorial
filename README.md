@@ -8,8 +8,9 @@ project.
 Both sides. The server decides: it reads `src/main/resources/tutorial/steps.json`, checks each online player twice a
 second and tells the client which hint to show, update or take down; progress is saved on the player (Fabric
 attachment, kept on death). The client draws hints in vanilla's tutorial-toast look with an item icon, in their own top-left corner
-(under Controlify's left button-guide column when it shows; the top right already holds status effects, the Atlas
-minimap, the compass and clock read-outs and every toast), fills in the player's own keybinds, uses a step's `.text.controller` wording when Controlify is in controller mode, switches vanilla's own
+(the top right already holds status effects, the Atlas minimap, the compass and clock read-outs and every toast;
+Controlify's left button-guide column moves down under the hints, through an optional client mixin into Controlify
+3.5.3's `GuideRenderer.extractLines`: recheck it when Controlify updates), fills in the player's own keybinds, uses a step's `.text.controller` wording when Controlify is in controller mode, switches vanilla's own
 tutorial off, and reports when a screen the current step waits for opens.
 
 Players with more than `veteran_play_hours` (2) of play time when they first meet the mod start with it off.
@@ -38,6 +39,12 @@ Conditions:
 | `{"any": [...]}`, `{"all": [...]}` | any / all of the listed conditions |
 
 A counting `item` or `stat` condition gives the toast a progress bar.
+
+## Building
+
+`JAVA_HOME=/usr/lib/jvm/java-25-openjdk sh ./gradlew build`. The Controlify mixin compiles against
+`reference-jars/controlify-3.5.3+mc26.1-universal.jar` (not committed: copy it from the server's
+`automodpack/host-modpack/main/mods/`).
 
 ## License
 

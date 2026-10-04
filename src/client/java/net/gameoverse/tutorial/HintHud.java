@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The tutorial's own HUD corner: top left, under Controlify's left button-guide column when that's showing. The top
- * right already holds status effects, the Atlas minimap, the compass and clock read-outs, Controlify's right column
- * and every toast, and a chain hint can stay up for minutes, so it gets a corner of its own.
+ * The tutorial's own HUD corner: the top left. The top right already holds status effects, the Atlas minimap, the
+ * compass and clock read-outs, Controlify's right column and every toast, and a chain hint can stay up for minutes,
+ * so it gets a corner of its own; Controlify's left column moves down under it (see GuideRendererMixin).
  */
-final class HintHud {
+public final class HintHud {
     private static final int MARGIN = 2;
     private static final int GAP = 2;
     private static final List<Hint> HINTS = new ArrayList<>();
+    private static int bottom;
 
     private HintHud() {
     }
@@ -45,6 +46,12 @@ final class HintHud {
 
     static void clear() {
         HINTS.clear();
+        bottom = 0;
+    }
+
+    /** How far down the hints reached when last drawn, in GUI pixels (0 when none show). */
+    public static int bottom() {
+        return bottom;
     }
 
     static void render(GuiGraphicsExtractor graphics, DeltaTracker delta) {
@@ -52,14 +59,16 @@ final class HintHud {
         long now = Util.getMillis();
         HINTS.removeIf(h -> h.finished(now));
         if (HINTS.isEmpty() || mc.options.hideGui || mc.getDebugOverlay().showDebugScreen()) {
+            bottom = 0;
             return;
         }
-        int y = MARGIN + ControllerGuide.leftColumnBottom();
+        int y = MARGIN;
         for (Hint hint : new ArrayList<>(HINTS)) {
             float visible = hint.visible(now);
             int x = MARGIN - Math.round((Hint.WIDTH + MARGIN) * (1 - visible));
             hint.draw(graphics, mc.font, x, y);
             y += Math.round((hint.height() + GAP) * visible);
         }
+        bottom = y;
     }
 }

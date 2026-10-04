@@ -24,6 +24,8 @@ dependencies {
     minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
     implementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
     implementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+    // Only for the optional Controlify mixin; copy the jar from host-modpack (see README)
+    compileOnly(files("reference-jars/controlify-3.5.3+mc26.1-universal.jar"))
 }
 
 java {
